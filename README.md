@@ -1,55 +1,28 @@
-b'\nTable of Contents\n=================\n\n   * [B2 Command Line Tool\xc2\xa0<a href="https://travis-ci.org/Backblaze/B2_Command_Line_Tool" rel="nofollow"><img src="https://camo.githubusercontent.com/fee29714cb03bfb33fcf03722060f81beb4a0fd8/68747470733a2f2f696d672e736869656c64732e696f2f7472617669732f4261636b626c617a652f42325f436f6d6d616e645f4c696e655f546f6f6c2f6d61737465722e7376673f6c6162656c3d5472617669732532304349" alt="Travis CI" data-canonical-src="https://img.shields.io/travis/Backblaze/B2_Command_Line_Tool/master.svg?label=Travis CI" style="max-width:100\\x;"></a>\xc2\xa0<a href="https://pypi.python.org/pypi/b2" rel="nofollow"><img src="https://camo.githubusercontent.com/e9657c34d5f7428d757b69ba84027794051b65b2/68747470733a2f2f696d672e736869656c64732e696f2f707970692f6c2f62322e7376673f6c6162656c3d4c6963656e7365" alt="License" data-canonical-src="https://img.shields.io/pypi/l/b2.svg?label=License" style="max-width:100\\x;"></a>\xc2\xa0<a href="https://pypi.python.org/pypi/b2" rel="nofollow"><img src="https://camo.githubusercontent.com/fe738f99ecb2491365dfcaa9e4ea85549ca18250/68747470733a2f2f696d672e736869656c64732e696f2f707970692f707976657273696f6e732f62322e7376673f6c6162656c3d707974686f6e25323076657273696f6e73" alt="python versions" data-canonical-src="https://img.shields.io/pypi/pyversions/b2.svg?label=python versions" style="max-width:100\\x;"></a>\xc2\xa0<a href="https://pypi.python.org/pypi/b2" rel="nofollow"><img src="https://camo.githubusercontent.com/644a10573542045aac863bb60f64d295839ba25f/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f62322e7376673f6c6162656c3d5079504925323076657273696f6e" alt="PyPI version" data-canonical-src="https://img.shields.io/pypi/v/b2.svg?label=PyPI version" style="max-width:100\\x;"></a>](#b2-command-line-tool)\n   * [Installation](#installation)\n   * [Usage](#usage)\n      * [Parallelism and the --threads parameter](#parallelism-and-the---threads-parameter)\n   * [Contrib](#contrib)\n      * [bash completion](#bash-completion)\n      * [detailed logs](#detailed-logs)\n   * [Release History](#release-history)\n      * [1.4.2 (2019-10-03)](#142-2019-10-03)\n      * [1.4.0 (April 25, 2019)](#140-april-25-2019)\n      * [1.3.8 (December 6, 2018)](#138-december-6-2018)\n      * [1.3.6 (August 21, 2018)](#136-august-21-2018)\n      * [1.3.4 (August 10, 2018)](#134-august-10-2018)\n      * [1.3.2 (July 28, 2018)](#132-july-28-2018)\n      * [1.3.0 (July 20, 2018)](#130-july-20-2018)\n      * [1.2.0 (July 6, 2018)](#120-july-6-2018)\n      * [1.1.0 (November 30, 2017)](#110-november-30-2017)\n      * [1.0.0 (November 9, 2017)](#100-november-9-2017)\n      * [0.7.4 (November 9, 2017)](#074-november-9-2017)\n   * [Developer Info](#developer-info)\n'# B2 Command Line Tool&nbsp;[![Travis CI](https://img.shields.io/travis/Backblaze/B2_Command_Line_Tool/master.svg?label=Travis%20CI)](https://travis-ci.org/Backblaze/B2_Command_Line_Tool)&nbsp;[![License](https://img.shields.io/pypi/l/b2.svg?label=License)](https://pypi.python.org/pypi/b2)&nbsp;[![python versions](https://img.shields.io/pypi/pyversions/b2.svg?label=python%20versions)](https://pypi.python.org/pypi/b2)&nbsp;[![PyPI version](https://img.shields.io/pypi/v/b2.svg?label=PyPI%20version)](https://pypi.python.org/pypi/b2)
 
-The command-line tool that gives easy access to all of the capabilities of B2 Cloud Storage.
+Table of Contents
+=================
 
-This program provides command-line access to the B2 service.
-
-Version 1.4.3
-
-# Installation
-
-This tool can be installed with:
-
-    pip install b2
-
-If you see a message saying that the `six` library cannot be installed, which
-happens if you're installing with the system python on OS X El Capitan, try
-this:
-
-    pip install --ignore-installed b2
-
-# Usage
-
-    b2 authorize-account [<applicationKeyId>] [<applicationKey>]
-    b2 cancel-all-unfinished-large-files <bucketName>
-    b2 cancel-large-file <fileId>
-    b2 clear-account
-    b2 copy-file-by-id [--metadataDirective [copy|replace]] [--contentType <contentType>] \
-             [--info <key>=<value>]* [--range start,end] \
-             <sourceFileId> <destinationBucketName> <b2FileName>
-    b2 create-bucket [--bucketInfo <json>] [--corsRules <json>] [--lifecycleRules <json>] <bucketName> [allPublic | allPrivate]
-    b2 create-key [--duration <validDurationSeconds>] [--bucket <bucketName>] [--namePrefix <namePrefix>] <keyName> <capabilities>
-    b2 delete-bucket <bucketName>
-    b2 delete-file-version [<fileName>] <fileId>
-    b2 delete-key <applicationKeyId>
-    b2 download-file-by-id [--noProgress] <fileId> <localFileName>
-    b2 download-file-by-name [--noProgress] <bucketName> <fileName> <localFileName>
-    b2 get-account-info
-    b2 get-bucket [--showSize] <bucketName>
-    b2 get-download-auth [--prefix <fileNamePrefix>] [--duration <durationInSeconds>] <bucketName>
-    b2 get-download-url-with-auth [--duration <durationInSeconds>] <bucketName> <fileName>
-    b2 get-file-info <fileId>
-    b2 help [commandName]
-    b2 hide-file <bucketName> <fileName>
-    b2 list-buckets
-    b2 list-file-names <bucketName> [<startFileName>] [<maxToShow>]
-    b2 list-file-versions <bucketName> [<startFileName>] [<startFileId>] [<maxToShow>]
-    b2 list-keys
-    b2 list-parts <largeFileId>
-    b2 list-unfinished-large-files <bucketName>
-    b2 ls [--long] [--versions] [--recursive] <bucketName> [<folderName>]
-    b2 make-url <fileId>
-    b2 sync [--delete] [--keepDays N] [--skipNewer] [--replaceNewer] \
+   * [B2 Command Line Tool <a href="https://travis-ci.org/Backblaze/B2_Command_Line_Tool" rel="nofollow"><img src="https://camo.githubusercontent.com/fee29714cb03bfb33fcf03722060f81beb4a0fd8/68747470733a2f2f696d672e736869656c64732e696f2f7472617669732f4261636b626c617a652f42325f436f6d6d616e645f4c696e655f546f6f6c2f6d61737465722e7376673f6c6162656c3d5472617669732532304349" alt="Travis CI" data-canonical-src="https://img.shields.io/travis/Backblaze/B2_Command_Line_Tool/master.svg?label=Travis CI" style="max-width:100\x;"></a> <a href="https://pypi.python.org/pypi/b2" rel="nofollow"><img src="https://camo.githubusercontent.com/e9657c34d5f7428d757b69ba84027794051b65b2/68747470733a2f2f696d672e736869656c64732e696f2f707970692f6c2f62322e7376673f6c6162656c3d4c6963656e7365" alt="License" data-canonical-src="https://img.shields.io/pypi/l/b2.svg?label=License" style="max-width:100\x;"></a> <a href="https://pypi.python.org/pypi/b2" rel="nofollow"><img src="https://camo.githubusercontent.com/fe738f99ecb2491365dfcaa9e4ea85549ca18250/68747470733a2f2f696d672e736869656c64732e696f2f707970692f707976657273696f6e732f62322e7376673f6c6162656c3d707974686f6e25323076657273696f6e73" alt="python versions" data-canonical-src="https://img.shields.io/pypi/pyversions/b2.svg?label=python versions" style="max-width:100\x;"></a> <a href="https://pypi.python.org/pypi/b2" rel="nofollow"><img src="https://camo.githubusercontent.com/644a10573542045aac863bb60f64d295839ba25f/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f62322e7376673f6c6162656c3d5079504925323076657273696f6e" alt="PyPI version" data-canonical-src="https://img.shields.io/pypi/v/b2.svg?label=PyPI version" style="max-width:100\x;"></a>](#b2-command-line-tool)
+   * [Installation](#installation)
+   * [Usage](#usage)
+      * [Parallelism and the --threads parameter](#parallelism-and-the---threads-parameter)
+   * [Contrib](#contrib)
+      * [bash completion](#bash-completion)
+      * [detailed logs](#detailed-logs)
+   * [Release History](#release-history)
+      * [1.4.2 (2019-10-03)](#142-2019-10-03)
+      * [1.4.0 (April 25, 2019)](#140-april-25-2019)
+      * [1.3.8 (December 6, 2018)](#138-december-6-2018)
+      * [1.3.6 (August 21, 2018)](#136-august-21-2018)
+      * [1.3.4 (August 10, 2018)](#134-august-10-2018)
+      * [1.3.2 (July 28, 2018)](#132-july-28-2018)
+      * [1.3.0 (July 20, 2018)](#130-july-20-2018)
+      * [1.2.0 (July 6, 2018)](#120-july-6-2018)
+      * [1.1.0 (November 30, 2017)](#110-november-30-2017)
+      * [1.0.0 (November 9, 2017)](#100-november-9-2017)
+      * [0.7.4 (November 9, 2017)](#074-november-9-2017)
+   * [Developer Info](#developer-info)
+eplaceNewer] \
         [--compareVersions <option>] [--compareThreshold N] \
         [--threads N] [--noProgress] [--dryRun ] [--allowEmptySource ] \
         [--excludeRegex <regex> [--includeRegex <regex>]] \
